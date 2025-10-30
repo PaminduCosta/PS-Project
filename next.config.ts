@@ -2,9 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   basePath: process.env.NODE_ENV === 'production' ? '/PS-Project' : '',
-  output: 'export', // Required for static export to GitHub Pages
+  output: 'export',
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "picsum.photos" },
@@ -13,4 +13,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
