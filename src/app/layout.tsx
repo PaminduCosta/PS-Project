@@ -7,11 +7,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-title: "Academic Journal — Your Name",
+title: "Academic Journal — Pamindu Costa",
 description: "A concise, interactive journal of what I learned.",
 metadataBase: new URL("https://example.com"),
 openGraph: {
-title: "Academic Journal — Your Name",
+title: "Academic Journal — Pamindu Costa",
 description: "A concise, interactive journal of what I learned.",
 type: "website",
 },
