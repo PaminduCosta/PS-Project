@@ -17,7 +17,7 @@ export const lessons: Lesson[] = [
     summary:
       "Core employability skills valued by employers.",
     image:
-      "./employability.jpg",
+      "/images/employability.jpg",
     accent: "from-brand-500 to-pink-500",
     keyTakeaways: [
       "Employability blends technical skills with power skills (communication, problem-solving, collaboration, adaptability).",
@@ -36,7 +36,7 @@ export const lessons: Lesson[] = [
     summary:
       "Write clear, professional emails: targeted subjects, tight structure, and considerate tone.",
     image:
-      "/email.jpg",
+      "/images/email.jpg",
     accent: "from-emerald-500 to-cyan-500",
     keyTakeaways: [
       "Subject line = topic + action. Open with purpose in sentence one.",
@@ -55,7 +55,7 @@ export const lessons: Lesson[] = [
     summary:
       "Clear, courteous calls: professional openings, holds/transfers, confirmations, and closings.",
     image:
-      "/telephone.jpg",
+      "/images/telephone.jpg",
     accent: "from-cyan-500 to-sky-500",
     keyTakeaways: [
       "Open with your name/org + purpose; confirm you reached the right person; summarize next steps before ending.",
@@ -74,7 +74,7 @@ export const lessons: Lesson[] = [
     summary:
       "Professional behavior at work: punctuality, preparation, civility, and follow-through.",
     image:
-      "/proffrsional.jpg",
+      "/images/proffrsional.jpg",
     accent: "from-amber-500 to-red-500",
     keyTakeaways: [
       "Civility and clear norms sustain team performance; align on meeting goals, roles, timing, and outcomes.",
@@ -93,7 +93,7 @@ export const lessons: Lesson[] = [
     summary:
       "Self-awareness, self-regulation, empathy, motivation, and social skills applied at work.",
     image:
-      "/emotion.jpg",
+      "/images/emotion.jpg",
     accent: "from-violet-500 to-indigo-500",
     keyTakeaways: [
       "EI involves perceiving, understanding, using, and managing emotions to guide thinking and behavior.",
@@ -112,7 +112,7 @@ export const lessons: Lesson[] = [
     summary:
       "Grow self-awareness via disclosure and feedback (open, blind, hidden, unknown panes).",
     image:
-      "/emotional-inteligence.jpg",
+      "/images/emotional-inteligence.jpg",
     accent: "from-fuchsia-500 to-purple-500",
     keyTakeaways: [
       "Expand the Open area by safe self-disclosure; reduce Blind spots by actively inviting feedback.",
@@ -131,7 +131,7 @@ export const lessons: Lesson[] = [
     summary:
       "Achievement-focused, ATS-friendly CVs: action verbs, metrics, relevance, clarity.",
     image:
-      "/cv.jpg",
+      "/images/cv.jpg",
     accent: "from-lime-500 to-emerald-600",
     keyTakeaways: [
       "Bullet formula: action verb + task/context + metric/outcome (quantify impact).",
@@ -150,7 +150,7 @@ export const lessons: Lesson[] = [
     summary:
       "Curate case studies showing context, constraints, decisions, and outcomes—not just UI.",
     image:
-      "/portfolio-management.jpg",
+      "/images/portfolio-management.jpg",
     accent: "from-rose-500 to-orange-500",
     keyTakeaways: [
       "Select 3–5 strong projects; tell a story: problem → options → decisions → evidence → results.",
@@ -169,7 +169,7 @@ export const lessons: Lesson[] = [
     summary:
       "Research the org, prepare STAR stories, and close with thoughtful questions & follow-up.",
     image:
-      "/interview.jpg",
+      "/images/interview.jpg",
     accent: "from-sky-500 to-blue-600",
     keyTakeaways: [
       "Build a story bank mapped to competencies; answer behavioral questions with STAR.",
@@ -189,7 +189,7 @@ export const lessons: Lesson[] = [
     summary:
       "Prepare your BATNA and reservation point; separate people from problems; trade on interests.",
     image:
-      "/nagotiation.jpg",
+      "/images/nagotiation.jpg",
     accent: "from-teal-500 to-cyan-500",
     keyTakeaways: [
       "Know your BATNA and walk-away; improve it before the meeting.",
@@ -209,7 +209,7 @@ export const lessons: Lesson[] = [
     summary:
       "Team work, Budget management, Planing and Risk management.",
     image:
-      "/food-court.jpeg",
+      "/images/food-court.jpeg",
     accent: "from-amber-400 to-red-500",
     keyTakeaways: [
       "Working with a group of people require patience and lot of social skills.",
@@ -228,7 +228,7 @@ export const lessons: Lesson[] = [
     summary:
       "Napkin & place settings, when to start, passing/serving, and American vs. Continental styles.",
     image:
-      "/dining.jpg",
+      "/images/dining.jpg",
     accent: "from-rose-400 to-amber-500",
     keyTakeaways: [
       "Place-setting basics: utensils are used outside-in; knife blades face the plate; napkin to the left or on the plate.",
