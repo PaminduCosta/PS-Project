@@ -17,7 +17,7 @@ export const lessons: Lesson[] = [
     summary:
       "Core employability skills valued by employers.",
     image:
-      "/employability.jpg",
+      "./employability.jpg",
     accent: "from-brand-500 to-pink-500",
     keyTakeaways: [
       "Employability blends technical skills with power skills (communication, problem-solving, collaboration, adaptability).",
