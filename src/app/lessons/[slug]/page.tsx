@@ -17,7 +17,6 @@ export async function generateMetadata({
   const { slug } = await params; // ✅ await params
   const lesson = getLesson(slug);
   if (!lesson) return { title: "Lesson not found" };
-
   return {
     title: `${lesson.title} — Academic Journal`,
     description: lesson.summary,
@@ -41,18 +40,21 @@ export default async function LessonPage({
 
   const { title, summary, image, keyTakeaways, reflection, references } = lesson;
 
+  // ✅ Handle base path for GitHub Pages
+  const basePath = process.env.NODE_ENV === 'production' ? '/PS-Project' : '';
+  const imageSrc = image ? `${basePath}${image}` : '';
+
   return (
     <main className="px-6 py-16 max-w-5xl mx-auto">
       <Link href="/#chapters" className="text-white/70 hover:text-white">
         ← Back
       </Link>
-
       <header className="mt-6 grid grid-cols-1 md:grid-cols-[18rem_1fr] gap-6 items-start">
         <div className="relative h-48 md:h-52 w-full overflow-hidden rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl">
           {/* If the remote image 404s, the neutral bg still keeps layout clean */}
-          {image && (
+          {imageSrc && (
             <Image
-              src={image}
+              src={imageSrc}
               alt={title}
               fill
               className="object-cover"
@@ -65,7 +67,6 @@ export default async function LessonPage({
           <p className="mt-3 text-white/70">{summary}</p>
         </div>
       </header>
-
       <section className="mt-10 space-y-10">
         <div>
           <h2 className="text-2xl font-semibold">Key Takeaways</h2>
@@ -83,7 +84,6 @@ export default async function LessonPage({
             </ul>
           )}
         </div>
-
         <div>
           <h2 className="text-2xl font-semibold">Reflection</h2>
           <p className="mt-3 text-white/80">
@@ -91,7 +91,6 @@ export default async function LessonPage({
               "What surprised you? What was hard? What would you change next time?"}
           </p>
         </div>
-
         <div>
           <h2 className="text-2xl font-semibold">References</h2>
           {references?.length ? (
