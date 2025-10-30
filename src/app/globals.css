@@ -1,26 +1,124 @@
+/* Tailwind v4: just import the framework */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* Design tokens (colors, fonts, radii, shadows, etc.) */
+@theme {
+/* Brand palette (OKLCH encouraged, hex OK) */
+--color-brand-50: #eff6ff;
+--color-brand-100: #dbeafe;
+--color-brand-200: #bfdbf
+--color-brand-300: #93c5fd;
+--color-brand-400: #60a5fa;
+--color-brand-500: #3b82f6;
+--color-brand-600: #2563eb;
+--color-brand-700: #1d4ed8;
+--color-brand-800: #1e40af;
+--color-brand-900: #1e3a8a;
+
+
+/* Fonts — creates utilities like font-display, font-body */
+--font-display: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+--font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+
+/* Radius & shadows */
+--radius-2xl: 1.25rem;
+--shadow-card: 0 8px 30px rgba(2,12,27,0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+html, body { height: 100%; }
+body { @apply bg-neutral-950 text-neutral-100 antialiased font-body; }
+
+
+/* Scroll snap behavior for the main scroller */
+.scroll-snap-y { scroll-snap-type: y mandatory; }
+.section-snap { scroll-snap-align: start; }
+
+
+/* Hide default scrollbar (still accessible via keyboard) */
+.main-scroller::-webkit-scrollbar { width: 0; height: 0; }
+
+
+/* Fancy gradient backdrop for the hero */
+.hero-gradient {
+background: radial-gradient(1200px 600px at 20% 0%, rgba(59,130,246,0.25), rgba(0,0,0,0) 60%),
+radial-gradient(800px 400px at 80% 20%, rgba(236,72,153,0.2), rgba(0,0,0,0) 60%),
+linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+/* Glass look */
+.glass { @apply bg-white/5 backdrop-blur-xl border border-white/10; }
+
+/* --- Section background palettes --- */
+
+.intro-gradient {
+  /* dark base */
+  background-color: #0a0a0a;
+  /* layered soft blobs */
+  background-image:
+    radial-gradient(60rem 60rem at 20% -10%, rgba(0, 160, 255, 0.18), transparent 40%),
+    radial-gradient(42rem 42rem at 95% 115%, rgba(255, 60, 160, 0.14), transparent 45%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0) 30%);
+  background-blend-mode: screen, screen, normal;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* --- Chapters: pronounced neutral grid (no color cast) --- */
+.chapters-grid-bg {
+  /* self-contained backdrop so the pseudo-element can sit behind content */
+  position: relative;
+  isolation: isolate;
+  background-color: #0b0b0b;
+
+  /* tuning knobs */
+  --cg-minor: rgba(255, 255, 255, 0.10); /* small grid line color */
+  --cg-major: rgba(255, 255, 255, 0.22); /* major grid line color */
+  --cg-minor-step: 26px;                 /* distance between small lines */
+  --cg-major-step: 104px;                /* distance between thick lines */
+}
+
+/* draw the grid behind content */
+.chapters-grid-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1; /* sits behind section content */
+  pointer-events: none;
+
+  /* minor + major grid; horizontal + vertical */
+  background-image:
+    /* minor verticals */ repeating-linear-gradient(
+      to right,
+      var(--cg-minor) 0 1px,
+      transparent 1px var(--cg-minor-step)
+    ),
+    /* minor horizontals */ repeating-linear-gradient(
+      to bottom,
+      var(--cg-minor) 0 1px,
+      transparent 1px var(--cg-minor-step)
+    ),
+    /* major verticals */ repeating-linear-gradient(
+      to right,
+      var(--cg-major) 0 2px,
+      transparent 2px var(--cg-major-step)
+    ),
+    /* major horizontals */ repeating-linear-gradient(
+      to bottom,
+      var(--cg-major) 0 2px,
+      transparent 2px var(--cg-major-step)
+    );
+  opacity: 0.9; /* make the grid more pronounced; lower if too bold */
+}
+
+
+
+.contact-gradient {
+  background-color: #0a0a0a;
+  background-image:
+    radial-gradient(54rem 54rem at 20% 120%, rgba(250, 204, 21, 0.16), transparent 45%),
+    radial-gradient(46rem 46rem at 90% -10%, rgba(56, 189, 248, 0.16), transparent 45%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0) 30%);
+  background-blend-mode: screen, screen, normal;
 }

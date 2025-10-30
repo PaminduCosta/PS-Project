@@ -1,103 +1,149 @@
-import Image from "next/image";
+// app/page.tsx (or src/app/page.tsx)
+import ArrowScrollHint from "@/components/ArrowScrollHint";
+import BentoGrid, { type BentoItem } from "@/components/ChaptersGrid";
+import { lessons as DATA } from "@/data/lessons";
+
+const YEAR = new Date().getFullYear();
+
+// Map shared data -> grid items (slug, title, summary, image)
+const gridItems: BentoItem[] = DATA.map(({ slug, title, summary, image }) => ({
+  slug,
+  title,
+  summary,
+  image,
+}));
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="main-scroller scroll-snap-y h-screen overflow-y-scroll scroll-smooth">
+      {/* HERO */}
+      <section
+        id="hero"
+        aria-label="Hero"
+        className="section-snap relative grid h-screen place-items-center hero-gradient"
+      >
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <p className="text-sm uppercase tracking-[0.2em] text-white/60">
+            Academic Journal
+          </p>
+          <h1 className="mt-3 text-5xl sm:text-6xl md:text-7xl font-semibold leading-[1.05] bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-transparent">
+            Professional Skills
+          </h1>
+          <h1 className="mt-3 text-5xl sm:text-6xl md:text-7xl font-semibold leading-[1.05] bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-transparent">
+            Course
+          </h1>
+          <p className="mt-5 text-white/70 max-w-2xl mx-auto">
+            A concise, interactive reflection on the core lessons I studied—
+            presented with smooth snap scrolling and deep-dive pages.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <ArrowScrollHint />
+      </section>
+
+      {/* INTRO */}
+<section
+  id="intro"
+  aria-label="Course Introduction"
+  className="section-snap grid h-screen place-items-center intro-gradient"
+>
+  <div className="mx-auto max-w-4xl px-6">
+    <div className="glass rounded-2xl p-8 md:p-5">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-white/60">
+        About this module
+      </p>
+      <h2 className="mt-1 text-3xl md:text-4xl font-semibold">
+        Professional Practice & Employability
+      </h2>
+
+      <p className="mt-4 text-white/80 leading-relaxed">
+        This journal captures how I connected classroom ideas to practical, job-ready behaviors.
+        It spans employability skills and workplace etiquette (email, telephone, meetings),
+        self-awareness frameworks (Emotional Intelligence & Johari Window), career materials
+        (achievement-focused CVs and narrative portfolios), interview prep (STAR) and negotiation
+        basics (BATNA & interests), plus real-world polish through dining etiquette. The Food Court
+        group project pulls it all together—research, flows, prototyping, and measurable outcomes.
+      </p>
+
+      <ul className="mt-6 grid sm:grid-cols-2 gap-3 text-white/75 text-sm">
+        <li className="glass rounded-xl px-4 py-3">Employability & professionalism habits</li>
+        <li className="glass rounded-xl px-4 py-3">Email & telephone etiquette that reduces friction</li>
+        <li className="glass rounded-xl px-4 py-3">Emotional Intelligence & the Johari Window</li>
+        <li className="glass rounded-xl px-4 py-3">CV writing with metrics & portfolio storytelling</li>
+        <li className="glass rounded-xl px-4 py-3">Interview (STAR) & negotiation (BATNA, interests)</li>
+        <li className="glass rounded-xl px-4 py-3">Dining etiquette & the Food Court capstone</li>
+      </ul>
+
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+        <div className="glass rounded-xl px-4 py-3">
+          <span className="block text-white/60 text-xs">Format</span>
+          <span className="font-medium">Summary → Key Takeaways → Reflection</span>
+        </div>
+        <div className="glass rounded-xl px-4 py-3">
+          <span className="block text-white/60 text-xs">Outcome</span>
+          <span className="font-medium">Preparing me to enter professional world</span>
+        </div>
+        <div className="glass rounded-xl px-4 py-3">
+          <span className="block text-white/60 text-xs">Core Skills</span>
+          <span className="font-medium">Communication, EQ, collaboration, judgment</span>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+
+      {/* CHAPTERS */}
+      <section
+        id="chapters"
+        aria-label="Chapters"
+        className="section-snap relative h-screen chapters-grid-bg"
+      >
+        <div className="mx-auto w-full max-w-7xl h-full px-6 py-6">
+          <BentoGrid items={gridItems} />
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section
+        id="contact"
+        aria-label="Contact"
+        className="section-snap grid h-screen place-items-center contact-gradient"
+      >
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <div className="glass rounded-2xl p-10">
+            <h2 className="text-3xl md:text-4xl font-semibold">Let’s Connect</h2>
+            <p className="mt-3 text-white/70 max-w-2xl mx-auto">
+              Thanks for reading! If you’d like to discuss the journal,
+              collaborate, or just say hi—reach out below.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="mailto:you@example.com"
+                className="rounded-xl bg-white text-neutral-900 px-5 py-3 font-medium shadow-[0_8px_30px_rgba(2,12,27,0.08)] hover:opacity-90 transition"
+              >
+                costapamindu7@gmail.com
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pamindu-bhanuka-costa-559586346/"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-xl border border-white/20 px-5 py-3 font-medium hover:bg-white/10 transition"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/PaminduCosta/"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-xl border border-white/20 px-5 py-3 font-medium hover:bg-white/10 transition"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+          <p className="mt-6 text-xs text-white/50">© {YEAR} Pamindu Costa</p>
+        </div>
+      </section>
+    </main>
   );
 }
