@@ -13,8 +13,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-```
 
-**Also create a `.env.production` file in your project root:**
-```
-NEXT_PUBLIC_BASE_PATH=/PS-Project
